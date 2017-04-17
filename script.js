@@ -29,10 +29,6 @@
 
       s.message = "Github Viewer"
 
-      console.log(s.repos)
-
       })
-
     //app.controller = ("MainCtrl", ["$scope", "$http", MainCtrl])
-
   }())

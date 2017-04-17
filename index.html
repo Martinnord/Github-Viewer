@@ -8,21 +8,17 @@
   </head>
   <body ng-controller="MainCtrl">
     <h1>{{error}}</h1>
-
     <h1>{{message}}</h1>
-
     <div>
         <form name="searchUser" ng-submit="search(username)">
             <input type="search" required placeholder="Type in username" ng-model="username">
             <input type="submit" value="search">
         </form>
     </div>
-
     <div>
         <h2>{{user.name}}</h2>
         <img ng-src="{{user.avatar_url}}" title="{{user.name}}">
     </div>
-
     <table>
         <thead>
             <th>Name</th>
@@ -32,11 +28,10 @@
         <tbody>
             <tr ng-repeat="repo in repos">
                 <td>{{repo.name}}</td>
-                <td>{{repo.stargazers_count}}</td>
+                <td>{{repo.stargazers_count | number}}</td>
                 <td>{{repo.language}}</td>
             </tr>
         </tbody>
     </table>
-
   </body>
 </html>
