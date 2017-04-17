@@ -28,6 +28,7 @@
       }
 
       s.message = "Github Viewer"
+      s.repoSortOrder = "-stargazers_count"
 
       })
     //app.controller = ("MainCtrl", ["$scope", "$http", MainCtrl])
