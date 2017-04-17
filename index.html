@@ -26,7 +26,7 @@
             <th>Language</th>
         </thead>
         <tbody>
-            <tr ng-repeat="repo in repos">
+            <tr ng-repeat="repo in repos | orderBy:'-stargazers_count'">
                 <td>{{repo.name}}</td>
                 <td>{{repo.stargazers_count | number}}</td>
                 <td>{{repo.language}}</td>
