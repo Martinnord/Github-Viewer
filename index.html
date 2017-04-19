@@ -3,14 +3,20 @@
   <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
     <title>Angular App 2</title>
   </head>
   <body ng-controller="MainCtrl">
-    <h1>{{error}}</h1>
-    <h1>{{message}}</h1>
+    <div class="mainText">
+        <h1>{{error}}</h1>
+        <h1 id="message">{{message}}</h1>
+        <hr>
+        <h2>{{countdown}}</h2>
+    </div>
     <div>
-        <form name="searchUser" ng-submit="search(username)">
+        <form id="forms" name="searchUser" ng-submit="search(username)">
             <input type="search" required placeholder="Type in username" ng-model="username">
             <input type="submit" value="search">
         </form>
