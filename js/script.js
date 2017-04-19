@@ -2,20 +2,18 @@
 
     var app = angular.module("githubApi", []) // Creating the module
 
-      app.controller("MainCtrl", function($scope, $http, $interval,
+      app.controller("MainCtrl", function($scope, github, $interval,
           $log, $anchorScroll, $location) {
         var s = $scope
-        var h = $http
 
       // Where I get all the shit!
-      var onUserComplete = function(response) {
-          s.user = response.data
-          h.get(s.user.repos_url)
-              .then(onRepos, onError)
+      var onUserComplete = function(data) {
+          s.user = data
+          github.getRepos(s.user).then(onRepos, onError)
       }
 
-      var onRepos = function(response) {
-          s.repos = response.data
+      var onRepos = function(data) {
+          s.repos = data
           $location.hash("userDetails")
           $anchorScroll()
       }
@@ -39,8 +37,8 @@
 
       s.search = function(username) {
           $log.info("Searching for: " + username)
-          $http.get("https://api.github.com/users/" + username) // Requesting the data from the API. Returns a promise
-            .then(onUserComplete, onError) // Processing the result
+           // Requesting the data from the API. Returns a promise
+          github.getUser(username).then(onUserComplete, onError) // Processing the result
           if(countdownInterval) { // If its null
               $interval.cancel(countdownInterval)
               s.countdown = null
