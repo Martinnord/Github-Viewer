@@ -2,7 +2,8 @@
 
     var app = angular.module("githubApi", []) // Creating the module
 
-      app.controller("MainCtrl", function($scope, $http, $interval, $log) {
+      app.controller("MainCtrl", function($scope, $http, $interval,
+          $log, $anchorScroll, $location) {
         var s = $scope
         var h = $http
 
@@ -15,6 +16,8 @@
 
       var onRepos = function(response) {
           s.repos = response.data
+          $location.hash("userDetails")
+          $anchorScroll()
       }
 
       // If an error accure
@@ -29,14 +32,19 @@
           }
       }
 
+      var countdownInterval = null
       var startCountDown = function() {
-          $interval(decrementCountdown, 1000, s.countdown)
+          countdownInterval = $interval(decrementCountdown, 1000, s.countdown)
       }
 
       s.search = function(username) {
           $log.info("Searching for: " + username)
           $http.get("https://api.github.com/users/" + username) // Requesting the data from the API. Returns a promise
             .then(onUserComplete, onError) // Processing the result
+          if(countdownInterval) { // If its null
+              $interval.cancel(countdownInterval)
+              s.countdown = null
+          }
       }
 
       s.message = "Github Viewer"
