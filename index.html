@@ -3,25 +3,17 @@
   <head>
     <meta charset="utf-8">
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.6.1/angular-route.min.js">
+    </script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="css/style.css">
     <script src="js/script.js"></script>
-    <script src="js/githubService.js"></script>
+    <script src="js/github.js"></script>
     <title>Angular App 2</title>
   </head>
-  <body ng-controller="MainCtrl">
-    <div class="mainText">
-        <h1>{{error}}</h1>
-        <h1 id="message">{{message}}</h1>
-        <hr>
-        <h2>{{countdown}}</h2>
-    </div>
-    <div>
-        <form id="forms" name="searchUser" ng-submit="search(username)">
-            <input type="search" required placeholder="Type in username" ng-model="username">
-            <input type="submit" value="search">
-        </form>
-    </div>
-    <div ng-include src="'userDetails.html'" ng-show="user"></div>
-  </body>
+
+    <body ng-view>
+        <h1>Github Viewer</h1>
+    </body>
+
 </html>
