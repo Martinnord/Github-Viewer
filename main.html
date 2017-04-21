@@ -1,11 +1,7 @@
 <div>
-  <div class="mainText">
-      <h2>{{countdown}}</h2>
-  </div>
-  <div>
-      <form id="forms" name="searchUser" ng-submit="search(username)">
-          <input type="search" required placeholder="Type in username" ng-model="username">
-          <input type="submit" value="search">
-      </form>
-  </div>
+    <h2 class="mainText">{{countdown}}</h2>
+    <form name="searchUser" ng-submit="search(username)">
+        <input type="search" required placeholder="Type in username" ng-model="username">
+        <input type="submit" value="search">
+    </form>
 </div>

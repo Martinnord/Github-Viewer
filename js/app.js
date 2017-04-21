@@ -6,7 +6,7 @@
         $routeProvider
             .when("/main", {
                 templateUrl: "main.html",
-                controller: "MainController"
+                controller: "MainCtrl"
             })
             .otherwise({redirectTo: "/main"})
     })
